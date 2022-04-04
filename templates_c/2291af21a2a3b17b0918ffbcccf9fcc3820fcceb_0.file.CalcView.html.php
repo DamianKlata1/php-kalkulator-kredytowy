@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 4.1.0, created on 2022-03-28 14:52:33
-  from 'E:\instalki\xampp\htdocs\php06\app\calc\CalcView.html' */
+  from 'E:\instalki\xampp\htdocs\php06\app\calc\CalcView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '2291af21a2a3b17b0918ffbcccf9fcc3820fcceb' => 
     array (
-      0 => 'E:\\instalki\\xampp\\htdocs\\php06\\app\\calc\\CalcView.html',
+      0 => 'E:\\instalki\\xampp\\htdocs\\php06\\app\\calc\\CalcView.tpl',
       1 => 1648320212,
       2 => 'file',
     ),
@@ -33,7 +33,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19975499176241af90
 
 <?php 
 $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8489205926241af9104fe08_79510829', 'footer');
-$_smarty_tpl->inheritance->endChild($_smarty_tpl, "../../templates/main.html");
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "../../templates/main.tpl");
 }
 /* {block 'content'} */
 class Block_19975499176241af90d581f0_39267756 extends Smarty_Internal_Block

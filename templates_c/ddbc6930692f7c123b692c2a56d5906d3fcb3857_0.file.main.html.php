@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 4.1.0, created on 2022-03-26 19:11:07
-  from 'E:\instalki\xampp\htdocs\php06\templates\main.html' */
+  from 'E:\instalki\xampp\htdocs\php06\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'ddbc6930692f7c123b692c2a56d5906d3fcb3857' => 
     array (
-      0 => 'E:\\instalki\\xampp\\htdocs\\php06\\templates\\main.html',
+      0 => 'E:\\instalki\\xampp\\htdocs\\php06\\templates\\main.tpl',
       1 => 1648317900,
       2 => 'file',
     ),

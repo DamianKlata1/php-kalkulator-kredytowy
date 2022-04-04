@@ -1,4 +1,5 @@
-{extends file="../../templates/main.html"}
+{extends file="main.tpl"}
+{* przy zdefiniowanych folderach nie trzeba już podawać pełnej ścieżki *}
 
 {block name=content}
 
