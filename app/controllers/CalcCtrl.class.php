@@ -70,7 +70,7 @@ class CalcCtrl
         return !getMessages()->isError();
     }
 
-    function process()
+    public function action_calcCompute()
     {
         $this->getParameters();
         if ($this->validate()) {
@@ -91,15 +91,20 @@ class CalcCtrl
         }
         $this->generateView();
     }
+    public function action_calcShow(){
+        $this->generateView();
+    }
 
     public function generateView()
     {
         //nie trzeba już tworzyć Smarty i przekazywać mu konfiguracji i messages
         // - wszystko załatwia funkcja getSmarty()
 
-        getSmarty()->assign('page_title','Przykład 06b');
-        getSmarty()->assign('page_description','Kolejne rozszerzenia dla aplikacja z jednym "punktem wejścia". Do nowej struktury dołożono automatyczne ładowanie klas wykorzystując w strukturze przestrzenie nazw.');
-        getSmarty()->assign('page_header','Kontroler główny');
+        getSmarty()->assign('user',unserialize($_SESSION['user']));
+
+        getSmarty()->assign('page_title','Kalkulator kredytowy');
+        getSmarty()->assign('page_header',' ');
+        getSmarty()->assign('page_description',' ');
 
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('res',$this->result);

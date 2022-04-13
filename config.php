@@ -2,7 +2,7 @@
 //konfiguracja
 $conf->server_name = 'localhost';
 $conf->server_url = 'http://'.$conf->server_name;
-$conf->app_root = '/php06';
+$conf->app_root = '/php07';
 $conf->action_root = $conf->app_root.'/ctrl.php?action=';
 
 //wartości wygenerowane lub na podstawie powyższych

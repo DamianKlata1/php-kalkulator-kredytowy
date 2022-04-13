@@ -23,6 +23,7 @@
         <h1><a href="{$conf->app_url}/index.php">Strona główna</a></h1>
         <nav>
             <a href="#form"><p>Formularz</p></a>
+            <a href="{$conf->action_url}logout"  class="button">wyloguj</a>
         </nav>
 
     </header>
@@ -40,7 +41,16 @@
     <!-- Footer -->
     {block name=content}Domyślna treść zawartości .... {/block}
 
-    {block name=footer} Domyślna treść stopki {/block}
+    {block name=footer}
+        <section id="footer">
+            <div class="inner">
+                <ul class="copyright">
+                    <li>Stopka kalkulatora kredytowego</li>
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </section>
+    {/block}
 
 </div>
 
