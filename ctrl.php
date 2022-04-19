@@ -1,20 +1,23 @@
 <?php
 require_once 'init.php';
-// Rozszerzenia:
-// Dodanie klasy Router oraz Route, które realizują idee przedstawione poprzednio, ale na wyższym poziomie i obiektowo.
-// Po pierwsze rezygnujemy ze struktury 'switch' w kontrolerze głównym i zastępujemy ją tablicą ścieżek przechowywaną
-// wewnątrz obiektu routera. Router powstaje w skrypcie init.php i jak inne ważne obekty jest dostępny przez getRouter().
+// Rozszerzenia w aplikacji bazodanowej:
+// - nowe pola dla konfiguracji połączenia z bazą danych w klasie Config
+// - inicjalizacja połączenia z bazą w skrypcie init.php, za pomocą funkcji getDB() - podobnie jak dla wcześniejszych obiektów
 
-// Odpowiednio nazwane metody routera realizują wszystkie zadania iplementowane uprzednio w funkcji control oraz strukturze 'switch'.
+// Do połączenia z bazą danych wykorzystujemy "maleńką" bibliotekę Medoo, która obudowuje standardowy obiekt PDO za pomocą klasy Medoo.
+// Biblioteka Medoo ułatwia dostęp do bazy dla większości standardowych rodzajów zapytań, przez brak konieczności używania SQL'a.
 
-// Oczywiście tym samym znika funkcja 'control' - jest ona prywatną metodą routera.
+// Jeżeli użytkownik chce jednak używać bezpośrednio PDO, to biblioteki używamy jedynie w celu połączenia z bazą, a później
+// pobieramy obiekt PDO po połączeniu (metoda pdo() obiektu klasy Medoo).
 
 getRouter()->setDefaultRoute('calcShow'); // akcja/ścieżka domyślna
 getRouter()->setLoginRoute('login'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
 
-getRouter()->addRoute('calcShow',    'CalcCtrl',  ['user','admin']);
-getRouter()->addRoute('calcCompute', 'CalcCtrl',  ['user','admin']);
-getRouter()->addRoute('login',       'LoginCtrl');
-getRouter()->addRoute('logout',      'LoginCtrl', ['user','admin']);
+getRouter()->addRoute('calcShow',       'CalcCtrl',      ['user','admin']);
+getRouter()->addRoute('calcCompute',    'CalcCtrl',      ['user','admin']);
+getRouter()->addRoute('login',          'LoginCtrl');
+getRouter()->addRoute('logout',         'LoginCtrl',     ['user','admin']);
+getRouter()->addRoute('resultList',     'ResultListCtrl');
+getRouter()->addRoute('resultListClear','ResultListCtrl',['admin']);
 
 getRouter()->go(); //wybiera i uruchamia odpowiednią ścieżkę na podstawie parametru 'action';

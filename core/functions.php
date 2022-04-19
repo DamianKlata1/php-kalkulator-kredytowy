@@ -24,6 +24,9 @@ function getFromSession($param_name,$required=false,$required_message=null){
     return getFrom($_SESSION,$param_name,$required,$required_message);
 }
 
+
+
+
 function forwardTo($action_name){
     getRouter()->setAction($action_name);
     include getConf()->root_path."/ctrl.php";

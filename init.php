@@ -23,6 +23,7 @@ function &getSmarty(){
 		//przypisz konfigurację i messages
 		$smarty->assign('conf',getConf());
 		$smarty->assign('msgs',getMessages());
+		$smarty->assign('db',getDB());
 		//zdefiniuj lokalizację widoków (aby nie podawać ścieżek przy odwoływaniu do nich)
 		$smarty->setTemplateDir(array(
 			'one' => getConf()->root_path.'/app/views',
@@ -38,6 +39,27 @@ function &getLoader() {
     global $cloader;
     return $cloader;
 }
+
+$db = null; //przygotuj Medoo, twórz tylko raz - wtedy kiedy potrzeba
+function &getDB() {
+    global $conf, $db;
+    if (!isset($db)) {
+        require_once 'libs/medoo/Medoo.php';
+        $db = new \Medoo\Medoo([
+            'database_type' => &$conf->db_type,
+            'server' => &$conf->db_server,
+            'database_name' => &$conf->db_name,
+            'username' => &$conf->db_user,
+            'password' => &$conf->db_pass,
+            'charset' => &$conf->db_charset,
+            'port' => &$conf->db_port,
+            'prefix' => &$conf->db_prefix,
+            'option' => &$conf->db_option
+        ]);
+    }
+    return $db;
+}
+
 
 require_once 'core/Router.class.php'; //załaduj i stwórz router
 $router = new core\Router();

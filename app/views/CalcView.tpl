@@ -7,7 +7,7 @@
 <section id="footer">
 
     <div class="inner">
-
+        <a href="{$conf->action_url}resultList" class="button primary">Wyświetl Historie Obliczeń</a>
         <form method="post" action="{$conf->action_url}calcCompute">
             <div class="fields">
                 <div class="field">

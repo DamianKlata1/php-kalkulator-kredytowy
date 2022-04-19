@@ -15,6 +15,7 @@ namespace app\controllers;
 //zamieniamy zatem 'require' na 'use' wskazując jedynie przestrzeń nazw, w której znajduje się klasa
 use app\forms\CalcForm;
 use app\transfer\CalcResult;
+use PDOException;
 
 class CalcCtrl
 {
@@ -88,6 +89,21 @@ class CalcCtrl
             $this->result->result = round($unroundedresult, 2);
 
             getMessages()->addInfo('Wykonano obliczenia.');
+            if(inRole('admin')){
+                try {
+                    getDB()->insert("results", [
+                        "amount" => $this->form->amount,
+                        "years" => $this->form->years,
+                        "interest" => $this->form->interest,
+                        "result" => $this->result->result,
+                        "dateofsave" => date("Y-m-d")
+                    ]);
+                    getMessages()->addInfo('Pomyślnie zapisano rekord');
+                } catch (PDOException $e){
+                    getMessages()->addError('Wystąpił nieoczekiwany błąd podczas zapisu rekordu');
+                    if (getConf()->debug) getMessages()->addError($e->getMessage());
+                }
+            }
         }
         $this->generateView();
     }
